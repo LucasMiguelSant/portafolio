@@ -67,7 +67,7 @@ article {
 .theme-toggle {
     position: fixed;
     top: 20px;
-    right: 20px;
+    right: 0px;
     z-index: 100;
     padding: 5px;
 }
@@ -183,5 +183,6 @@ input:checked + .slider:before {
         padding: 1rem;
     }
 }
+
 
 
