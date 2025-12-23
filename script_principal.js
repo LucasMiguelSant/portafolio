@@ -3,38 +3,37 @@ const toggle = document.getElementById("darkModeToggle");
 toggle.addEventListener("change", () => {
     document.body.classList.toggle("dark-mode");
 });
-fetch("https://fastapi-backend.onrender.com/proyectos")
-  .then(res => res.json())
-  .then(data => {
-    console.log(data);
-  });
 
+// Función para cargar proyectos desde tu backend en Render
 function cargarProyectos() {
-    fetch("proyectos.json")
+    fetch("https://fastapi-backend.onrender.com/proyectos")
         .then(res => {
             if (!res.ok) {
-                throw new Error("No se pudo cargar proyectos.json");
+                throw new Error("No se pudo cargar proyectos desde el backend");
             }
             return res.json();
         })
         .then(proyectos => {
             const frame = document.getElementById("Frame_de_proyectos");
 
-            proyectos.forEach((p, i) => {
+            // Limpiar antes de renderizar
+            frame.innerHTML = "";
+
+            proyectos.forEach((p) => {
                 // Crear el contenedor del proyecto
                 const div = document.createElement("div");
                 div.classList.add("proyecto");
 
                 // Hacerlo clickeable
                 div.onclick = () => {
-                    location.href = p.ruta;
+                    location.href = p.url; // usa "url" del backend
                 };
 
-                // Título del proyecto (puedes cambiar el texto si quieres)
+                // Título del proyecto
                 const h4 = document.createElement("h4");
-                h4.textContent = `${p.nombre}`;
+                h4.textContent = p.nombre;
 
-                // (Opcional) descripción placeholder
+                // Descripción placeholder
                 const pDesc = document.createElement("p");
                 pDesc.textContent = "Haz clic para ver más detalles.";
 
@@ -45,10 +44,10 @@ function cargarProyectos() {
             });
         })
         .catch(err => {
-            console.error(err);
+            console.error("Error:", err);
+            alert("No se pudo cargar la lista de proyectos.");
         });
 }
+
+// Ejecutar al cargar la página
 window.addEventListener("load", cargarProyectos);
-
-
-
