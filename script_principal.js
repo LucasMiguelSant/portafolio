@@ -3,6 +3,12 @@ const toggle = document.getElementById("darkModeToggle");
 toggle.addEventListener("change", () => {
     document.body.classList.toggle("dark-mode");
 });
+fetch("https://fastapi-backend.onrender.com/proyectos")
+  .then(res => res.json())
+  .then(data => {
+    console.log(data);
+  });
+
 function cargarProyectos() {
     fetch("proyectos.json")
         .then(res => {
@@ -43,5 +49,6 @@ function cargarProyectos() {
         });
 }
 window.addEventListener("load", cargarProyectos);
+
 
 
