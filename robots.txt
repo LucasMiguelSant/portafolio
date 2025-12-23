@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://LucasMiguelSant.github.io/sitemap.xml
+Sitemap: https://lucasmiguelsant.github.io/portafolio/sitemap.xml
+
