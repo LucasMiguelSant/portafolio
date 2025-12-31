@@ -6,7 +6,7 @@ toggle.addEventListener("change", () => {
 
 // Función para cargar proyectos desde tu backend en Render
 function cargarProyectos() {
-    fetch("https://fastapi-backend.onrender.com/proyectos")
+    fetch("https://fastapi-backend-7lwv.onrender.com/proyectos")
         .then(res => {
             if (!res.ok) {
                 throw new Error("No se pudo cargar proyectos desde el backend");
@@ -51,3 +51,4 @@ function cargarProyectos() {
 
 // Ejecutar al cargar la página
 window.addEventListener("load", cargarProyectos);
+
